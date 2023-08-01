@@ -81,9 +81,24 @@ const Mask = fabric.util.createClass(
       const maskData = maskCtx.getImageData(0, 0, width, height).data;
 
       for (let i = 0; i < len; i += 4) {
-        sourceData[i + 3] = maskData[i]; // adjust value of alpha data
+        if (maskData[i] === 0) {
+          // if the mask pixel is black
+          sourceData[i + 3] = 60; // make the source pixel semi-transparent
+        } else {
+          sourceData[i + 3] = maskData[i]; // else, keep the original value
+        }
       }
     },
+    // _mapData(maskCtx, imageData, width, height) {
+    //   const { data, height: imgHeight, width: imgWidth } = imageData;
+    //   const sourceData = data;
+    //   const len = imgWidth * imgHeight * 4;
+    //   const maskData = maskCtx.getImageData(0, 0, width, height).data;
+
+    //   for (let i = 0; i < len; i += 4) {
+    //     sourceData[i + 3] = maskData[i]; // adjust value of alpha data
+    //   }
+    // },
   }
 );
 

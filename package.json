@@ -50,7 +50,8 @@
     "build": "lerna run build",
     "build:image-editor": "lerna run --scope tui-image-editor build",
     "build:react": "lerna run --scope @toast-ui/react-image-editor build",
-    "build:vue": "lerna run --scope @toast-ui/vue-image-editor build"
+    "build:vue": "lerna run --scope @toast-ui/vue-image-editor build",
+    "build:sv": "lerna run --scope tui-image-editor build && cp apps/image-editor/dist/tui-image-editor.js /Users/ajay/Development/agent-optmizer/space-visualizer/app/javascript/tui"
   },
   "workspaces": [
     "apps/*"
