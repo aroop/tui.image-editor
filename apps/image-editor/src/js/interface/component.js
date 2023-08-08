@@ -36,6 +36,7 @@ class Component {
    * @param {fabric.Image} oImage - Fabric image instance
    */
   setCanvasImage(name, oImage) {
+    oImage.set({ erasable: false });
     this.graphics.setCanvasImage(name, oImage);
   }
 
