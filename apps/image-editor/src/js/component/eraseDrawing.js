@@ -1,3 +1,4 @@
+import { fabric } from 'fabric';
 import Component from '@/interface/component';
 import { componentNames } from '@/consts';
 
@@ -11,31 +12,34 @@ import { componentNames } from '@/consts';
 class EraseDrawing extends Component {
   constructor(graphics) {
     super(componentNames.ERASE_DRAWING, graphics);
+
+    /**
+     * Eraser width
+     * @type {number}
+     */
     this.width = 12;
+
+    /**
+     * Inverted erasing (undo)
+     * @type {boolean}
+     */
+    this.inverted = false;
   }
 
   start(setting) {
-    console.log('eraseDrawing start');
     const canvas = this.getCanvas();
 
+    // Enable drawing mode with erasing behavior
     canvas.isDrawingMode = true;
-    this.setEraser(setting);
-  }
 
-  setEraser(setting) {
-    console.log('setEraser');
-    const brush = this.getCanvas().freeDrawingBrush;
-
-    setting = setting || {};
-    this.width = setting.width || this.width;
-    brush.width = this.width;
-    brush.color = 'rgba(0, 0, 0, 0)';
-    brush.globalCompositeOperation = 'destination-out'; // Eraser effect
+    canvas.freeDrawingBrush = new fabric.EraserBrush(canvas);
+    canvas.freeDrawingBrush.width = setting?.width || this.width;
+    canvas.freeDrawingBrush.inverted = setting?.inverted || this.inverted;
   }
 
   end() {
-    console.log('eraseDrawing end');
     const canvas = this.getCanvas();
+
     canvas.isDrawingMode = false;
   }
 }
