@@ -37,6 +37,12 @@ module.exports = ({ minify, WEBPACK_BUILD }) => ({
         amd: 'tui-color-picker',
         root: ['tui', 'colorPicker'],
       },
+      'fabric': {
+        commonjs: 'fabric',
+        commonjs2: 'fabric',
+        amd: 'fabric',
+        root: 'fabric',
+      },
     },
   ],
   module: {
