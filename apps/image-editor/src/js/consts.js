@@ -77,7 +77,8 @@ export const componentNames = keyMirror(
   'FILTER',
   'SHAPE',
   'ZOOM',
-  'RESIZE'
+  'RESIZE',
+  'ERASE_DRAWING'
 );
 
 /**
@@ -216,7 +217,8 @@ export const drawingModes = keyMirror(
   'SHAPE',
   'ICON',
   'ZOOM',
-  'RESIZE'
+  'RESIZE',
+  'ERASE_DRAWING'
 );
 
 /**
