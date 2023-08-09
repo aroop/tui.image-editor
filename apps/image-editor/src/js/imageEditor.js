@@ -1316,8 +1316,10 @@ class ImageEditor {
    */
   _onAddObject(objectProps) {
     const obj = this._graphics.getObject(objectProps.id);
-    this._invoker.fire(events.EXECUTE_COMMAND, getObjectType(obj.type));
-    this._pushAddObjectCommand(obj);
+    if (obj) {
+      this._invoker.fire(events.EXECUTE_COMMAND, getObjectType(obj.type));
+      this._pushAddObjectCommand(obj);
+    }
   }
 
   /**

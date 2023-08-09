@@ -29,12 +29,12 @@ class EraseDrawing extends Component {
   start(setting) {
     const canvas = this.getCanvas();
 
-    // Enable drawing mode with erasing behavior
-    canvas.isDrawingMode = true;
-
     canvas.freeDrawingBrush = new fabric.EraserBrush(canvas);
     canvas.freeDrawingBrush.width = setting?.width || this.width;
     canvas.freeDrawingBrush.inverted = setting?.inverted || this.inverted;
+
+    // Enable drawing mode with erasing behavior
+    canvas.isDrawingMode = true;
   }
 
   end() {

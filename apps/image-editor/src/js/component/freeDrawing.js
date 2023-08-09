@@ -33,6 +33,7 @@ class FreeDrawing extends Component {
   start(setting) {
     const canvas = this.getCanvas();
 
+    canvas.freeDrawingBrush = new fabric.PencilBrush(canvas);
     canvas.isDrawingMode = true;
     this.setBrush(setting);
   }
